@@ -1,9 +1,22 @@
 function App() {
+  var that = this;
   this.map = new google.maps.Map(document.getElementById('map'), {
     zoom: 11,
     center: { lat: 37.779236, lng: -122.449621 },
     mapTypeControl: false
   });
+
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      var pos = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+      };
+
+      that.map.setCenter(pos)
+      $('#address-from').val(pos.lat + ', ' + pos.lng)
+    })
+  }
 
   this.directionsDisplay = new google.maps.DirectionsRenderer;
   this.directionsDisplay.setMap(this.map);
@@ -111,7 +124,7 @@ function lookupTimeZone(geocoder, location_name, callback) {
       // Lookup timezone.
       var params = {
         location: position.lat() + "," + position.lng(),
-        key: "AIzaSyAtDFC3VLvbxSFJ-8tAWIFhVipSdH81Eio",
+        key: "AIzaSyBn0B1og6iffdz-nHiZuBJU-Anu56PVlzo",
         timestamp: new Date().getTime() / 1000.0
       }
 

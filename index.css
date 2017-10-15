@@ -80,6 +80,13 @@ html, body {
   width:20em;
 }
 
+#floating-panel select {
+  width: 21em;
+  height: 2em;
+  padding: 4px;
+  margin: 4px;
+}
+
 #floating-panel {
   background: #fff;
   padding: 10px;
